@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ReceiptTest" time="0.013" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ReceiptTest" time="0.039" tests="4" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.181.b15-5.fc28.x86_64/jre/lib/amd64"/>
@@ -60,5 +60,18 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="myFirstTest" classname="ReceiptTest" time="0.01"/>
+  <testcase name="myFourthTest" classname="ReceiptTest" time="0.015"/>
+  <testcase name="myThirdTest" classname="ReceiptTest" time="0.001"/>
+  <testcase name="mySecondTest" classname="ReceiptTest" time="0.017">
+    <failure message="expected: &lt;29.83&gt; but was: &lt;28.33&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <29.83> but was: <28.33>
+	at ReceiptTest.mySecondTest(ReceiptTest.java:45)
+]]></failure>
+    <system-out><![CDATA[1 book at 12.49
+1 cd at 14.99
+1 chocolate bar at 0.85
+Sales Taxes 28.330000000000002
+Total 28.330000000000002
+]]></system-out>
+  </testcase>
+  <testcase name="myFirstTest" classname="ReceiptTest" time="0"/>
 </testsuite>

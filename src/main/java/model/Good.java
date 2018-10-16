@@ -40,6 +40,9 @@ public class Good extends AGood implements IGood{
 
     private boolean isExempt()
     {
-        return EnumUtils.isValidEnum(GoodType.class, this.goodType.toString());
+        if (GoodType.BOOKS.equals(this.goodType)) return true;
+        if (GoodType.FOOD.equals(this.goodType)) return true;
+        if (GoodType.MEDICAL.equals(this.goodType)) return true;
+        return false;
     }
 }

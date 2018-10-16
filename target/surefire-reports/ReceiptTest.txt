@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: ReceiptTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 sec - in ReceiptTest
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.039 sec <<< FAILURE! - in ReceiptTest
+mySecondTest  Time elapsed: 0.017 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <29.83> but was: <28.33>
+	at ReceiptTest.mySecondTest(ReceiptTest.java:45)
+
