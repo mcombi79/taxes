@@ -1,4 +1,7 @@
 model/ImportedGood.class
+model/GoodFactory.class
+model/GoodCategory.class
+model/AGood.class
 model/Basket.class
 model/IGood.class
 model/Good.class

@@ -1,6 +1,7 @@
 package model;
 
 public interface IGood {
-     Double applyTaxes();
+     Double getTaxesPercent();
      Double getItemPriceWithTaxes();
+     Double getItemPrice();
 }

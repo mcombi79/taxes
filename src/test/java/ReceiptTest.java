@@ -1,7 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import model.Basket;
-import model.Good;
+import model.*;
 import org.junit.jupiter.api.Test;
 
 class ReceiptTest {
@@ -11,11 +10,15 @@ class ReceiptTest {
 
         Basket basket=new Basket();
 
-        Good cd=new Good("cd","IMPORTED",12.02);
+        IGood cd= GoodFactory.createGood("cd", GoodCategory.DOMESTIC,12.02);
+
         basket.addItem(cd);
 
+        IGood pofume=GoodFactory.createGood("Parfume",GoodCategory.DOMESTIC,10.0);
+        basket.addItem(pofume)
+        ;
         basket.printReceipt();
-        assertEquals(new Double(13.222),basket.getBasketTotal());
+        assertEquals(new Double(24.222),basket.getBasketTotal());
     }
 
 }
