@@ -25,12 +25,20 @@ public class Basket {
         System.out.println("Total "+ basketTotal);
     }
 
+    /**
+     *
+     * @return the sum of the basket item shelf prices
+     */
     private BigDecimal sumBasketTotal(){
         return items.stream().map(IGood::getShelfPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
     }
 
+    /**
+     *
+     * @return the sum of each applyed tax
+     */
     private BigDecimal sumTaxesTotal(){
         return items.stream().map(IGood::getTaxAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
