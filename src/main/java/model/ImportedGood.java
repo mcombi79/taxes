@@ -1,6 +1,5 @@
 package model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,12 +10,8 @@ import java.math.RoundingMode;
 @Setter
 public class ImportedGood extends AGood implements IGood {
 
-    private final Double taxPercent=5.0;
-
-    @Override
-    public Double getTaxesPercent() {
-        return 5.0;
-    }
+    @Getter
+    private Double taxPercent=5.0;
 
 
     public ImportedGood(String name,GoodCategory category,Double price,GoodType goodType){
@@ -31,7 +26,9 @@ public class ImportedGood extends AGood implements IGood {
 
     @Override
     public BigDecimal calculateTax() {
-        return BigDecimal.valueOf(this.getPrice()* taxPercent/100).setScale(2, RoundingMode.HALF_UP);
+        return BigDecimal.valueOf(getPrice()* 5.0/100).setScale(2, RoundingMode.HALF_UP);
 
     }
+
+
 }

@@ -34,7 +34,7 @@ class ReceiptTest {
 
         basket.addItem(book);
 
-        IGood cd= GoodFactory.createGood("cd", GoodCategory.DOMESTIC,14.99,GoodType.BOOKS);
+        IGood cd= GoodFactory.createGood("cd", GoodCategory.DOMESTIC,14.99,GoodType.MUSIC);
 
         basket.addItem(cd);
 

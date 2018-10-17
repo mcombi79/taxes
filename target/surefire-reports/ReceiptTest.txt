@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: ReceiptTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.025 sec <<< FAILURE! - in ReceiptTest
+myFourthTest  Time elapsed: 0.017 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <24.22> but was: <22.02>
+	at ReceiptTest.myFourthTest(ReceiptTest.java:77)
+
+myThirdTest  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <24.22> but was: <22.02>
+	at ReceiptTest.myThirdTest(ReceiptTest.java:61)
+
+mySecondTest  Time elapsed: 0.003 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <29.83> but was: <28.33>
+	at ReceiptTest.mySecondTest(ReceiptTest.java:45)
+
+myFirstTest  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <24.22> but was: <22.02>
+	at ReceiptTest.myFirstTest(ReceiptTest.java:24)
+

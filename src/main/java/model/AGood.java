@@ -17,6 +17,7 @@ public abstract class AGood implements IGood{
     protected BigDecimal tax;
     protected BigDecimal shelfPrice;
 
+
     public AGood(String name,GoodCategory category,Double price,GoodType goodType){
         this.category=category;
         this.name=name;
@@ -24,6 +25,7 @@ public abstract class AGood implements IGood{
         this.goodType=goodType;
         this.tax=calculateTax();
         this.shelfPrice=calculateShelfPrice();
+
     }
 
     @Override
@@ -45,4 +47,7 @@ public abstract class AGood implements IGood{
     public BigDecimal getShelfPrice(){
         return shelfPrice;
     }
+
+
+
 }

@@ -13,17 +13,14 @@ import static model.GoodType.BOOKS;
 @Setter
 public class Good extends AGood implements IGood{
 
-    private final Double taxPercent=10.0;
+
 
     public Good(String name,GoodCategory category,Double price,GoodType goodType){
+
         super(name,category,price,goodType);
+
     }
 
-    @Override
-    public Double getTaxesPercent() {
-        if(isExempt() ) return 0.0;
-        else return 10.0;
-    }
 
 
     @Override
@@ -55,7 +52,7 @@ public class Good extends AGood implements IGood{
     public BigDecimal calculateTax() {
         if (isExempt()) return BigDecimal.ZERO;
         else{
-            return BigDecimal.valueOf(this.getPrice()* taxPercent/100).setScale(2, RoundingMode.HALF_UP);
+            return BigDecimal.valueOf(getPrice() * 10.0/100).setScale(2, RoundingMode.HALF_UP);
         }
     }
 }
