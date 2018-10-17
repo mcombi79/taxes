@@ -26,11 +26,14 @@ public class Basket {
     }
 
     private BigDecimal sumBasketTotal(){
+        return items.stream().map(IGood::getShelfPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
     }
 
     private BigDecimal getTaxesTotal(){
-
+        return items.stream().map(IGood::getTaxAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public void addItem(IGood good){

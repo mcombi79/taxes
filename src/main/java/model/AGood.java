@@ -36,5 +36,13 @@ public abstract class AGood implements IGood{
         return BigDecimal.valueOf(this.price).setScale(2, RoundingMode.HALF_UP).add(this.tax);
     }
 
+    @Override
+    public BigDecimal getTaxAmount() {
+        return tax;
+    }
 
+    @Override
+    public BigDecimal getShelfPrice(){
+        return shelfPrice;
+    }
 }
