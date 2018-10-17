@@ -2,7 +2,6 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.math3.util.Precision;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -11,8 +10,8 @@ import java.math.RoundingMode;
 @Setter
 public class Good implements IGood{
 
-    private final static BigDecimal basicTaxPercent =BigDecimal.valueOf(0.10);
-    private final static BigDecimal importTaxPercent =BigDecimal.valueOf(0.05);
+    private final static BigDecimal basicTaxPercent = new BigDecimal("0.10");
+    private final static BigDecimal importTaxPercent =new BigDecimal("0.05");
     private String name;
     private GoodCategory category;
     private BigDecimal price;

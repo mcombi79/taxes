@@ -11,9 +11,9 @@ class ReceiptTest {
 
 
     @Test
-    void mySecondTest() {
+    void number1Test() {
 
-        System.out.println ("test 2");
+
         Basket basket=new Basket();
 
         IGood book= new Good("book", GoodType.DOMESTIC,new BigDecimal("12.49"),GoodCategory.BOOKS);
@@ -33,8 +33,8 @@ class ReceiptTest {
     }
 
     @Test
-    void myThirdTest() {
-        System.out.println ("test 3");
+    void number2Test() {
+
         Basket basket=new Basket();
 
         IGood chocolate= new Good("box of chocolates", GoodType.IMPORTED,new BigDecimal("10.00"),GoodCategory.FOOD);
@@ -51,8 +51,8 @@ class ReceiptTest {
     }
 
     @Test
-    void myFourthTest() {
-        System.out.println ("test 4");
+    void number3Test() {
+
         Basket basket=new Basket();
 
         IGood perfume=new Good("bottle of perfume",GoodType.IMPORTED,new BigDecimal("27.99"),GoodCategory.PERFUME);
@@ -72,9 +72,6 @@ class ReceiptTest {
         assertEquals(new BigDecimal(74.68).setScale(2, RoundingMode.HALF_UP),basket.getBasketTotal());
     }
 
-    @Test
-    void damnTest(){
-        System.out.print(Precision.round(new Double(0.5625),2));
-    }
+
 
 }
