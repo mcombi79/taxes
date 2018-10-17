@@ -2,6 +2,7 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.math3.util.Precision;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -10,17 +11,17 @@ import java.math.RoundingMode;
 @Setter
 public class Good implements IGood{
 
-    private final static Double basicTaxPercent =0.1;
-    private final static Double importTaxPercent =0.05;
+    private final static BigDecimal basicTaxPercent =BigDecimal.valueOf(0.10);
+    private final static BigDecimal importTaxPercent =BigDecimal.valueOf(0.05);
     private String name;
     private GoodCategory category;
-    private Double price;
+    private BigDecimal price;
     private GoodType goodType;
     private BigDecimal tax;
     private BigDecimal shelfPrice;
 
 
-    public Good(String name,GoodType goodType,Double price,GoodCategory category){
+    public Good(String name,GoodType goodType,BigDecimal price,GoodCategory category){
 
         this.category=category;
         this.name=name;
@@ -53,21 +54,10 @@ public class Good implements IGood{
      * Return the value of the taxes
      */
     public BigDecimal calculateTax() {
-        Double taxes=0.00;
-        Double taxes2=0.0;
-
-        if (!isExempt()) {
-                taxes+=price * basicTaxPercent;
-
-            }
-
-        if (GoodType.IMPORTED.equals(this.goodType)){
-           taxes2= price * importTaxPercent;
+        BigDecimal TWENTY          = new BigDecimal("20");
+       return getDomesticTaxes().add(getImportedTaxes()).multiply(TWENTY).setScale(0, RoundingMode.CEILING).divide(TWENTY).setScale(2);
 
 
-        }
-
-        return BigDecimal.valueOf(taxes+taxes2).setScale(2,BigDecimal.ROUND_HALF_UP);
     }
 
     @Override
@@ -79,7 +69,7 @@ public class Good implements IGood{
     @Override
     public BigDecimal calculateShelfPrice() {
 
-        return BigDecimal.valueOf(this.price).setScale(2, RoundingMode.HALF_UP).add(this.tax);
+        return price.add(tax);
     }
 
     @Override
@@ -92,5 +82,26 @@ public class Good implements IGood{
         return shelfPrice;
     }
 
+
+
+    private BigDecimal getDomesticTaxes(){
+
+        if (!isExempt()) {
+            return price.multiply(basicTaxPercent);
+
+
+
+        }
+        else return BigDecimal.ZERO.setScale(2);
+    }
+
+
+    private BigDecimal getImportedTaxes(){
+        if (GoodType.IMPORTED.equals(this.goodType)){
+            return price.multiply(importTaxPercent);
+
+        }
+        else return BigDecimal.ZERO;
+    }
 
 }
