@@ -2,31 +2,33 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang3.EnumUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import static model.GoodType.BOOKS;
-
 @Getter
 @Setter
-public class Good extends AGood implements IGood{
+public class Good implements IGood{
 
-    private final static Double taxPercent=10.0;
+    private final static Double basicTaxPercent =0.1;
+    private final static Double importTaxPercent =0.05;
+    private String name;
+    private GoodCategory category;
+    private Double price;
+    private GoodType goodType;
+    private BigDecimal tax;
+    private BigDecimal shelfPrice;
 
 
-    public Good(String name,GoodCategory category,Double price,GoodType goodType){
+    public Good(String name,GoodType goodType,Double price,GoodCategory category){
 
-        super(name,category,price,goodType);
+        this.category=category;
+        this.name=name;
+        this.price=price;
+        this.goodType=goodType;
+        this.tax=calculateTax();
+        this.shelfPrice=calculateShelfPrice();
 
-    }
-
-
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 
     /**
@@ -35,7 +37,7 @@ public class Good extends AGood implements IGood{
      */
     private boolean isExempt()
     {
-        switch (goodType) {
+        switch (category) {
             case BOOKS:
             case FOOD:
             case MEDICAL: return true;
@@ -51,9 +53,44 @@ public class Good extends AGood implements IGood{
      * Return the value of the taxes
      */
     public BigDecimal calculateTax() {
-        if (isExempt()) return BigDecimal.ZERO;
-        else{
-            return BigDecimal.valueOf(getPrice() * taxPercent/100).setScale(2, RoundingMode.HALF_UP);
+        Double taxes=0.00;
+        Double taxes2=0.0;
+
+        if (!isExempt()) {
+                taxes+=price * basicTaxPercent;
+
+            }
+
+        if (GoodType.IMPORTED.equals(this.goodType)){
+           taxes2= price * importTaxPercent;
+
+
         }
+
+        return BigDecimal.valueOf(taxes+taxes2).setScale(2,BigDecimal.ROUND_HALF_UP);
     }
+
+    @Override
+    public String toString() {
+        if (GoodType.IMPORTED.equals(goodType)) return "1 imported "+name+ " at "+shelfPrice;
+        return "1 "+name+ " at "+shelfPrice;
+    }
+
+    @Override
+    public BigDecimal calculateShelfPrice() {
+
+        return BigDecimal.valueOf(this.price).setScale(2, RoundingMode.HALF_UP).add(this.tax);
+    }
+
+    @Override
+    public BigDecimal getTaxAmount() {
+        return tax;
+    }
+
+    @Override
+    public BigDecimal getShelfPrice(){
+        return shelfPrice;
+    }
+
+
 }

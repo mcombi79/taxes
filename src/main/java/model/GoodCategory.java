@@ -1,5 +1,5 @@
 package model;
 
 public enum GoodCategory {
-    DOMESTIC,IMPORTED
+    BOOKS,FOOD,MEDICAL,MUSIC,TOYS,PERFUME
 }
