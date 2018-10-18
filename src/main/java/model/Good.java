@@ -10,8 +10,8 @@ import java.math.RoundingMode;
 @Setter
 public class Good {
 
-    private final static BigDecimal basicTaxPercent = new BigDecimal("0.10");
-    private final static BigDecimal importTaxPercent =new BigDecimal("0.05");
+    private BigDecimal basicTaxPercent = new BigDecimal("0.10");
+    private BigDecimal importTaxPercent =new BigDecimal("0.05");
     private String name;
     private GoodCategory category;
     private BigDecimal price;
