@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 
 @Getter
 @Setter
-public class Good implements IGood{
+public class Good {
 
     private final static BigDecimal basicTaxPercent = new BigDecimal("0.10");
     private final static BigDecimal importTaxPercent =new BigDecimal("0.05");
@@ -48,12 +48,12 @@ public class Good implements IGood{
 
     }
 
-    @Override
+
     /**
      * Return the value of the taxes
      */
     public BigDecimal calculateTax() {
-        BigDecimal TWENTY          = new BigDecimal("20");
+        BigDecimal TWENTY = new BigDecimal("20");
        return getDomesticTaxes().add(getImportedTaxes()).multiply(TWENTY).setScale(0, RoundingMode.CEILING).divide(TWENTY).setScale(2);
 
 
@@ -65,18 +65,18 @@ public class Good implements IGood{
         return "1 "+name+ " at "+shelfPrice;
     }
 
-    @Override
+
     public BigDecimal calculateShelfPrice() {
 
         return price.add(tax);
     }
 
-    @Override
+
     public BigDecimal getTaxAmount() {
         return tax;
     }
 
-    @Override
+
     public BigDecimal getShelfPrice(){
         return shelfPrice;
     }

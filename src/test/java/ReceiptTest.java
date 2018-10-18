@@ -1,11 +1,10 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import model.*;
-import org.apache.commons.math3.util.Precision;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ReceiptTest {
 
@@ -16,15 +15,15 @@ class ReceiptTest {
 
         Basket basket=new Basket();
 
-        IGood book= new Good("book", GoodType.DOMESTIC,new BigDecimal("12.49"),GoodCategory.BOOKS);
+        Good book= new Good("book", GoodType.DOMESTIC,new BigDecimal("12.49"),GoodCategory.BOOKS);
 
         basket.addItem(book);
 
-        IGood cd= new Good("cd", GoodType.DOMESTIC,new BigDecimal("14.99"),GoodCategory.MUSIC);
+        Good cd= new Good("cd", GoodType.DOMESTIC,new BigDecimal("14.99"),GoodCategory.MUSIC);
 
         basket.addItem(cd);
 
-        IGood chocolatebar=new Good("chocolate bar",GoodType.DOMESTIC,new BigDecimal("0.85"),GoodCategory.FOOD);
+        Good chocolatebar=new Good("chocolate bar",GoodType.DOMESTIC,new BigDecimal("0.85"),GoodCategory.FOOD);
         basket.addItem(chocolatebar);
 
         basket.printReceipt();
@@ -37,11 +36,11 @@ class ReceiptTest {
 
         Basket basket=new Basket();
 
-        IGood chocolate= new Good("box of chocolates", GoodType.IMPORTED,new BigDecimal("10.00"),GoodCategory.FOOD);
+        Good chocolate= new Good("box of chocolates", GoodType.IMPORTED,new BigDecimal("10.00"),GoodCategory.FOOD);
 
         basket.addItem(chocolate);
 
-        IGood perfume=new Good("bottle of perfume",GoodType.IMPORTED,new BigDecimal("47.50"),GoodCategory.PERFUME);
+        Good perfume=new Good("bottle of perfume",GoodType.IMPORTED,new BigDecimal("47.50"),GoodCategory.PERFUME);
         basket.addItem(perfume);
 
         basket.printReceipt();
@@ -55,16 +54,16 @@ class ReceiptTest {
 
         Basket basket=new Basket();
 
-        IGood perfume=new Good("bottle of perfume",GoodType.IMPORTED,new BigDecimal("27.99"),GoodCategory.PERFUME);
+        Good perfume=new Good("bottle of perfume",GoodType.IMPORTED,new BigDecimal("27.99"),GoodCategory.PERFUME);
         basket.addItem(perfume);
 
-        IGood perfume2=new Good("bottle of perfume",GoodType.DOMESTIC,new BigDecimal("18.99"),GoodCategory.PERFUME);
+        Good perfume2=new Good("bottle of perfume",GoodType.DOMESTIC,new BigDecimal("18.99"),GoodCategory.PERFUME);
         basket.addItem(perfume2);
 
-        IGood pills=new Good("packet of headache pills",GoodType.DOMESTIC,new BigDecimal("9.75"),GoodCategory.MEDICAL);
+        Good pills=new Good("packet of headache pills",GoodType.DOMESTIC,new BigDecimal("9.75"),GoodCategory.MEDICAL);
         basket.addItem(pills);
 
-        IGood chocolates=new Good("box of imported chocolates",GoodType.IMPORTED,new BigDecimal("11.25"),GoodCategory.FOOD);
+        Good chocolates=new Good("box of imported chocolates",GoodType.IMPORTED,new BigDecimal("11.25"),GoodCategory.FOOD);
         basket.addItem(chocolates);
 
         basket.printReceipt();

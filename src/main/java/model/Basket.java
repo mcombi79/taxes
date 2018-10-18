@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Basket {
 
-    private ArrayList<IGood> items;
+    private ArrayList<Good> items;
 
     private BigDecimal basketTotal;
     private BigDecimal basketTaxesTotal;
@@ -30,7 +30,7 @@ public class Basket {
      * @return the sum of the basket item shelf prices
      */
     private BigDecimal sumBasketTotal(){
-        return items.stream().map(IGood::getShelfPrice)
+        return items.stream().map(Good::getShelfPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
     }
@@ -40,11 +40,11 @@ public class Basket {
      * @return the sum of each applyed tax
      */
     private BigDecimal sumTaxesTotal(){
-        return items.stream().map(IGood::getTaxAmount)
+        return items.stream().map(Good::getTaxAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    public void addItem(IGood good){
+    public void addItem(Good good){
         if (this.items==null) items=new ArrayList<>();
         items.add(good);
     }
